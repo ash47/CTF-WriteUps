@@ -9,8 +9,8 @@ CTF Write Ups
 ### Write Ups
 
 ## AceBear Security Contest 2019
- -[md5Converter](md5Converter/README.md)
+ - [md5Converter](AceBear%20Security%20Contest%202019/md5Converter/README.md)
    - A simple webapp where you need to exploit a flaw in AES CBC to obtain the flag.
- - [duudududduduud](duudududduduud/README.md)
+ - [duudududduduud](AceBear%20Security%20Contest%202019/duudududduduud/README.md)
    - A simple webapp where you exploit a different flaw in AES CBC to obtain the flag.
 
