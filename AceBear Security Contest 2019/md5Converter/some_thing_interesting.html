@@ -1,0 +1,88 @@
+
+<h1>There's nothing lol, Go away and use find more :> </h1>
+<!--
+class AES_(object):
+	def __init__(self, key):
+		self.blocksize = 16
+		self.key = md5(key.encode("hex")).digest()
+	def pad(self, st):
+		return st + (self.blocksize - len(st) % self.blocksize) * chr(self.blocksize - len(st) % self.blocksize)
+	def unpad(self, st):
+		# Remove the PKCS#7 padding
+		length = len(st)
+		val = ord(st[-1])
+		if val > self.blocksize:
+		    raise ValueError('Input is not padded or padding is corrupt')
+		real = length - val
+		return st[:real]
+	def encrypt(self, msg):
+		msg = self.pad(msg)
+		iv = os.urandom(16)
+		crypt = AES.new(self.key, AES.MODE_CBC, iv)
+		return (iv + crypt.encrypt(msg)).encode('hex')
+	def decrypt(self, msg):
+		msg = msg.decode('hex')
+		iv = msg[:self.blocksize]
+		crypt = AES.new(self.key, AES.MODE_CBC, iv)
+		return self.unpad(crypt.decrypt(msg[self.blocksize:]))
+
+def gen_hmac(data,secret):
+    h = HMAC.new(secret)
+    h.update(data)
+    hmac = h.hexdigest()
+    return hmac
+
+def verify_hmac(data,hmac,secret):
+	h = HMAC.new(secret)
+	h.update(data)
+	if h.hexdigest() == hmac:
+		return True
+	else:
+		return False
+
+@app.route("/secret_func", methods=["POST"])
+def secret_func():
+	try:
+		aes = AES_(KEY)
+		secret = request.form["secret"]
+		if not isinstance(secret, basestring) or len(secret) > 100 or len(secret) == 0:
+			return redirect(url_for("welcome"))
+		else:
+			sessionID = ''.join(choice(string.ascii_letters + string.digits) for _ in range(28))
+			secret_hmac = md5(_SECRET + os.urandom(randrange(len(secret)))).digest()
+			secret_filename = "md5_" + md5(sessionID).hexdigest()[4:]
+			file = open('./secret_directory/' + secret_filename,'w')	# my secret md5 string is in './secret_directory/flag'
+			file.write('This is your md5 secret: ' + 'AceBear{' + md5(secret).hexdigest() + '}')	# your md5 string :>
+			file.close()
+			secret_link = aes.encrypt(secret_filename + '|' + secret_hmac)
+			return render_template_string("""
+				<h1><p align='center'>This is your secret link </h1>
+				<p align='center'><a class='button button-blue' href='view_secret?file={0}&sign={1}'>Your secret</p></a>
+			""".format(secret_link, gen_hmac(secret_filename,secret_hmac)))
+	except:
+		return """<h1>Bad input :(</h1>"""
+
+@app.route("/view_secret", methods=["GET"])
+def view_secret():
+	try:
+		aes = AES_(KEY)
+		secret_link = request.args.get('file')
+		sign = request.args.get('sign')
+		if secret_link is None or sign is None:
+			return redirect(url_for("welcome"))
+		secret_link = aes.decrypt(secret_link).split('|')
+		secret_filename = secret_link[0]
+		secret_hmac = secret_link[1]
+		if not verify_hmac(secret_filename, sign, secret_hmac):
+			return render_template_string("<h1>HMAC: Not match! </h1><br />")
+		else:
+			try:
+				file = open('./secret_directory/' + secret_filename,'r')
+			except:
+				return render_template_string("<h1>404 - File not found !!!</h1>")
+			content = file.read()
+			file.close()
+			return content
+	except:
+		return """<h1>Bad request :(</h1>"""
+-->
