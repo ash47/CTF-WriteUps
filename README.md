@@ -16,4 +16,4 @@ CTF Write Ups
 
 ## TSG CTF 2020
  - [Beginner Web](TSG%20CTF%202020/Beginner%20Web/README.md)
-  - A code review challenge for a NodeJS server that exploits a flaw with object prototypes and __defineSetter__
+   - A code review challenge for a NodeJS server that exploits a flaw with object prototypes and __defineSetter__
