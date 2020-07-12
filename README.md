@@ -14,3 +14,6 @@ CTF Write Ups
  - [duudududduduud](AceBear%20Security%20Contest%202019/duudududduduud/README.md)
    - A simple webapp where you exploit a different flaw in AES CBC to obtain the flag.
 
+## TSG CTF 2020
+ - [Beginner Web](TSG%20CTF%202020/Beginner%20Web/README.md)
+  - A code review challenge for a NodeJS server that exploits a flaw with object prototypes and __defineSetter__
