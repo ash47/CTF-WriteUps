@@ -61,7 +61,7 @@ converter=base64&input=12345678901234567890
  - We can go off and download NodeJS 14.5.0 on the off chance we need that version, but it probably doesn't matter.
  - With NodeJS installed, we can CD (change directory) into the folder of the source code and type `npm install`, which will download and install everything we need into the `node_modules folder`.
  - We now have not only the app's source code, but the source code of all dependencies.
- - A good approach might be to try the `npm audit` function to check the dependencies for issues, Google each of the depencies for bugs, or do a manual code review. I did all 3 of these and got no where.
+ - A good approach might be to try the `npm audit` function to check the dependencies for issues, Google each of the dependencies for bugs, or do a manual code review. I did all 3 of these and got no where.
 
 ### Source Code - app.js
 
