@@ -32,7 +32,7 @@ converter=base64&input=12345678901234567890
 ![Contents of SRC](https://raw.githubusercontent.com/ash47/CTF-WriteUps/master/TSG%20CTF%202020/Beginner%20Web/img/sc_01.png)
 
  - This is the contents of the source code.
- - We can see the `package.json` and `package-lock.json` files. These are used in web apps to give instructions on what depedencies there are (down to the exact versions) and how to run the app.
+ - We can see the `package.json` and `package-lock.json` files. These are used in web apps to give instructions on what dependencies there are (down to the exact versions) and how to run the app.
  - Let's take a look inside `package.json`:
 
 ```json
